@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tine's Geospatial Curriculum Vitae</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Leaflet CSS -->
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+
+    <style>
+       body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    background-color: #f9f9fb;
+    color: #333;
+}
+
+/* Tabs */
+.tab {
+    display: flex;
+    background-color: #24011a;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.tab button {
+    flex: 1;
+    padding: 16px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.tab button:hover {
+    background-color: #3a0228;
+}
+
+.tab button.active {
+    background-color: #a64d79;
+}
+
+/* Tab Content */
+.tabcontent {
+    display: none;
+    padding: 30px;
+    animation: fadeIn 0.4s ease-in;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* Header */
+.video-header {
+    background: linear-gradient(135deg, #24011a, #3a0228);
+    color: white;
+    padding: 40px 20px;
+    border-radius: 0 0 20px 20px;
+}
+
+.header-content {
+    text-align: center;
+}
+
+/* Profile Pic */
+.profile-pic {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid white;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    margin-bottom: 15px;
+}
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: auto;
+}
+
+/* Sections */
+section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: white;
+    border-left: 5px solid #a64d79;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Headings */
+h1, h2, h3, h4 {
+    color: #76185a;
+}
+
+h2 {
+    border-bottom: 2px solid #a64d79;
+    padding-bottom: 5px;
+}
+
+/* Links */
+a {
+    color: #a64d79;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Map */
+#map {
+    height: 800px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 3px solid #24011a;
+}
+    </style>
+</head>
+<body>
+
+<!-- Tabs -->
+<div class="tab">
+    <button class="active" onclick="openTab(event, 'about')">About Me</button>
+    <button onclick="openTab(event, 'maptab')">Experience Map</button>
+    <button onclick="openTab(event, 'contact')">Contact Me</button>
+</div>
+
+<!-- Tab 1 -->
+<div id="about" class="tabcontent">
+
+  <!-- Header -->
+  <header class="video-header">
+    <div class="header-content">
+      <img src="profile.png" alt="Portrait of Tinevimbo Evelyn Rusike" class="profile-pic">
+      <h1>Tinevimbo Evelyn Rusike's Personal Portfolio</h1>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- About Me -->
+  <section id="about-me" class="about-me">
+  <h2>ABOUT ME</h2>
+  <p>
+    I am an extremely motivated GIS expert with a deep passion for using geospatial technology to deliver sustainable solutions. Working with GIS data brings me great fulfilment, as it allows me to uncover insights that have a real impact on people and the environment.
+  </p>
+  <p>
+    A fun fact about me: I am a fighter by nature, a quality I bring to every aspect of my life. I am solution-oriented, highly detail-focused, and dedicated to motivating those around me.
+  </p>
+  <p>
+    Beyond GIS, I love spending time outdoors—running, taking long walks, and building endurance. These activities energize me and keep me focused in both my professional and personal life.
+  </p>
+</section>
+
+    <!-- Education -->
+    <section id="education" class="education">
+      <h2>EDUCATION</h2>
+
+      <h4>Undergraduate (2017–2021) - University of Zimbabwe</h4>
+      <p>Degree class: Distinction</p>
+
+
+      <h4>Postgraduate (2024–2026) - University of Aberdeen UK</h4>
+      <p>Degree class: To Be Awarded</p>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certifications" class="certifications">
+      <h2>LICENSES AND CERTIFICATIONS</h2>
+      <ul>
+        <li>GeoPandas Certification (Modern GIS)</li>
+        <li>Make an Impact with Modern GeoApps Certification (ESRI)</li>
+        <li>Going Places with Spatial Analysis Certification (ESRI)</li>
+        <li>ArcGIS Pro Essential Training Certification (LinkedIn)</li>
+        <li>Preparing a Greenhouse Gas Inventory Certification (FAO)</li>
+      </ul>
+    </section>
+
+  </div>
+</div>
+
+<!-- Tab 2 -->
+<div id="maptab" class="tabcontent">
+    <h2>Past Experience Map</h2>
+    <div id="map"></div>
+</div>
+<!-- Tab 3 -->
+<div id="contact" class="tabcontent">
+    <h2 style="text-align:center; color:#76185a; margin-bottom:20px;">Get in Touch</h2>
+    
+    <div style="text-align:center; font-family: Arial, sans-serif; background:#fff0f6; padding:30px; border-radius:15px; max-width:500px; margin:auto; box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+        
+        <p style="margin:10px 0; font-size:1.1em;">
+            📧 Email: <a href="mailto:tinevimbo37@gmail.com" style="color:#a64d79; text-decoration:none;">tinevimbo37@gmail.com</a>
+        </p>
+        
+        <p style="margin:10px 0; font-size:1.1em;">
+            💼 LinkedIn: <a href="https://www.linkedin.com/in/tinevimbo-rusike-038a91164/" target="_blank" style="color:#a64d79; text-decoration:none;">Profile</a>
+        </p>
+        
+        <p style="margin:10px 0; font-size:1.1em;">
+            🖥️ GitHub: <a href="https://github.com/TinevimboRusike" target="_blank" style="color:#a64d79; text-decoration:none;">TinevimboRusike</a>
+        </p>
+
+        <p style="margin-top:20px; font-style:italic; color:#76185a;">
+            “Passionate about geospatial solutions and the environment – let's connect!” 🌍
+        </p>
+
+        <!-- Download CV Button -->
+        <a href="CV.pdf" download style="
+            display:inline-block;
+            margin-top:25px;
+            padding:12px 25px;
+            background:#a64d79;
+            color:white;
+            font-weight:bold;
+            border-radius:8px;
+            text-decoration:none;
+            transition:0.3s;
+        " 
+        onmouseover="this.style.background='#76185a'" 
+        onmouseout="this.style.background='#a64d79'">
+            📄 Download CV
+        </a>
+
+    </div>
+</div>
+
+<!-- Leaflet JS -->
+ <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+
+<script>
+
+//Function 
+
+function openTab(evt, tabName) {
+    let tabcontent = document.getElementsByClassName("tabcontent");
+    let tabbuttons = document.querySelectorAll(".tab button");
+
+    for (let i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    tabbuttons.forEach(btn => btn.classList.remove("active"));
+
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.classList.add("active");
+}
+
+// Default open tab
+document.getElementById("about").style.display = "block";
+
+// Initialize map
+var map = L.map('map').setView([31.7,27.22], 2);
+
+// Basemap
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; CARTO',
+    subdomains: 'abcd',
+    maxZoom: 19
+}).addTo(map);
+
+// Job Locations
+// Scout Aerial Africa
+L.marker([-17.78733, 31.10085]).addTo(map)
+    .bindPopup(`
+    <div style="text-align:center; width: 220px; font-family: Arial, sans-serif;">
+        <img src="SAA.png" alt="Scout Aerial Africa Logo" style="width:60px; height:60px; margin-bottom:8px; border-radius:8px;">
+        <h4 style="margin:4px 0; color:#24011a;">Scout Aerial Africa</h4>
+        <p style="margin:0; font-weight:bold;">GIS Specialist</p>
+        <p style="margin:4px 0 0 0; font-size:0.9em;">UAV Mapping & Spatial Analysis (2021-23)</p>
+    </div>
+    `);
+
+// Westbury Nursing Home
+L.marker([51.49825,-2.61633]).addTo(map)
+    .bindPopup(`
+    <div style="text-align:center; width: 220px; font-family: Arial, sans-serif;">
+        <img src="WNH.png" alt="Westbury Nursing Home Logo" style="width:60px; height:60px; margin-bottom:8px; border-radius:8px;">
+        <h4 style="margin:4px 0; color:#24011a;">Westbury Nursing Home</h4>
+        <p style="margin:0; font-weight:bold;">Care Assistant</p>
+        <p style="margin:4px 0 0 0; font-size:0.9em;">Assisting elderly & monitoring vitals (2023-Present)</p>
+    </div>
+    `);
+
+// Bristol Environmental Records Center
+L.marker([51.50626,-2.63250]).addTo(map)
+    .bindPopup(`
+    <div style="text-align:center; width: 220px; font-family: Arial, sans-serif;">
+        <img src="BRERC.png" alt="Bristol Environmental Records Center Logo" style="width:60px; height:60px; margin-bottom:8px; border-radius:8px;">
+        <h4 style="margin:4px 0; color:#24011a;">Bristol Environmental Records Center</h4>
+        <p style="margin:0; font-weight:bold;">GIS Specialist</p>
+        <p style="margin:4px 0 0 0; font-size:0.9em;">Spatial queries & GIS troubleshooting</p>
+    </div>
+    `);
+
+// Fix map size when tab is shown
+function openTab(evt, tabName) {
+    let tabcontent = document.getElementsByClassName("tabcontent");
+    let tabbuttons = document.querySelectorAll(".tab button");
+
+    for (let i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    tabbuttons.forEach(btn => btn.classList.remove("active"));
+
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.classList.add("active");
+
+    if(tabName === 'maptab') map.invalidateSize();
+}
+</script>
+
+</body>
+</html>
