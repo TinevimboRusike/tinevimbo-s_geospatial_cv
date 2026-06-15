@@ -79,6 +79,26 @@
     margin-bottom: 15px;
 }
 
+.project-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.project-text {
+    flex: 1;
+}
+
+.project-img-side {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    flex-shrink: 0;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
 /* Container */
 .container {
     max-width: 900px;
@@ -130,6 +150,7 @@ a:hover {
 <div class="tab">
     <button class="active" onclick="openTab(event, 'about')">About Me</button>
     <button onclick="openTab(event, 'maptab')">Experience Map</button>
+    <button onclick="openTab(event, 'projects')">Projects</button>
     <button onclick="openTab(event, 'contact')">Contact Me</button>
 </div>
 
@@ -190,9 +211,120 @@ a:hover {
 <!-- Tab 2 -->
 <div id="maptab" class="tabcontent">
     <h2>Past Experience Map</h2>
+        <h3>Click on the map markers to learn more about each role</h3>
+
     <div id="map"></div>
 </div>
+
 <!-- Tab 3 -->
+<div id="projects" class="tabcontent">
+    <h2 style="text-align:left; color:#76185a;">Projects</h2>
+
+ <section class="project-row">
+    <div class="project-text">
+        <h4>🌍 Site Suitability Analysis for an Alpine River Dam</h4>
+
+        <p>
+            This research used Geospatial Analysis to identify the suitable
+            location for an Alpine River dam in Vinadio, Italy.
+        </p>
+
+        <p><strong>Tools:</strong> ArcGIS Pro, Python, Scikit-learn</p>
+
+        <a href="https://arcg.is/SnXvC2">Click Here to View the Study</a>
+    </div>
+
+    <img src="images/dam_project.png"
+         alt="Alpine dam suitability map"
+         class="project-img-side">
+</section>
+
+ <section class="project-row">
+    <div class="project-text">
+        <h4>🛰️ 2. Development of a UAV Take-Off Point Navigation Web Application</h4>
+
+        <p>
+            Developed a web application that shows all the suitable take-off points for UAVs
+            and groups them by parish to help pilots in the event of an emergency.
+        </p>
+
+        <p>
+            The app is available online via Mango Map and ArcGIS.
+        </p>
+
+        <p>
+            <strong>Tools:</strong> Leaflet.js, GeoServer, HTML, CSS, JavaScript,
+            ArcGIS Instant Apps, ArcGIS Pro, Mango Map
+        </p>
+
+        <a href="https://arcg.is/1bqqja1">
+            Click Here to Use with ArcGIS Instant Apps
+        </a>
+
+        <p>
+            <a href="http://mgo.ms/s/j84i2">
+                Click Here to Use with Mango Map
+            </a>
+        </p>
+    </div>
+
+    <img src="images/uav_project.png"
+         alt="UAV Take-Off Point Navigation Application"
+         class="project-img-side">
+</section>
+
+    <section class="project-row">
+    <div class="project-text">
+        <h4>🛰️ 3. Development of England's Hydrobasins Drought Monitoring Dashboard</h4>
+
+        <p>
+            Developed a drought dashboard to monitor drought conditions
+            between 1981 and 2024 using the SPI and SPEI indices.
+        </p>
+
+        <p>
+            <strong>Tools:</strong> ArcGIS Pro, R Studio
+        </p>
+
+        <a href="https://tinevimborusike.shinyapps.io/englands_hydrobasins_drought_monitoring_dashboard/">
+            Click Here to View the Dashboard
+        </a>
+    </div>
+
+    <img src="images/drought_dashboard.png"
+         alt="England Hydrobasins Drought Monitoring Dashboard"
+         class="project-img-side">
+</section>
+
+    <section class="project-row">
+    <div class="project-text">
+        <h4>🛰️ 4. Development of an ArcGIS Custom Tool for Ecological Niche Modelling</h4>
+
+        <p>
+            Developed a custom ArcGIS tool that is shareable and reusable.
+        </p>
+
+        <p>
+            The Ecological Niche Modelling Tool allows researchers to apply
+            the same workflow to study other species niches by simply changing
+            the species presence data.
+        </p>
+
+        <p>
+            <strong>Tools:</strong> ArcGIS Pro, Python
+        </p>
+
+        <a href="https://github.com/TinevimboRusike/Environmental_Niche_Modelling_Tool.git">
+            Click Here to Download the Tool
+        </a>
+    </div>
+
+    <img src="images/niche_modelling_tool.png"
+         alt="Ecological Niche Modelling Tool"
+         class="project-img-side">
+</section>
+</div>
+<!-- Tab 4 -->
 <div id="contact" class="tabcontent">
     <h2 style="text-align:center; color:#76185a; margin-bottom:20px;">Get in Touch</h2>
     
@@ -241,21 +373,6 @@ a:hover {
 
 <script>
 
-//Function 
-
-function openTab(evt, tabName) {
-    let tabcontent = document.getElementsByClassName("tabcontent");
-    let tabbuttons = document.querySelectorAll(".tab button");
-
-    for (let i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-
-    tabbuttons.forEach(btn => btn.classList.remove("active"));
-
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.classList.add("active");
-}
 
 // Default open tab
 document.getElementById("about").style.display = "block";
